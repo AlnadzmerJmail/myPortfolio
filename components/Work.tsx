@@ -1,9 +1,9 @@
-'use client';
-import React from 'react';
+import dynamic from 'next/dynamic';
 
 import WorkContent from './WorkContent';
 
 function Work() {
+	//  const DynamicContent = dynamic(() => import('./WorkContent'));
 	return (
 		<div id="work" className="w-ful overflow-hidden bg-white dark:bg-dark-100">
 			<div className="w-full pl-5 md:pl-0  md:text-left md:w-3/4 md:relative md:left-[400px]  bg-white dark:bg-dark-100">

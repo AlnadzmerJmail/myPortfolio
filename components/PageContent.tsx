@@ -1,13 +1,11 @@
 'use client';
 import { useTheme } from 'next-themes';
 
-import About from '@/components/About';
-import Work from '@/components/Work';
-import Contact from '@/components/Contact';
+import About from './About';
+import Work from './Work';
+import Contact from './Contact';
 
-import '../dist/home.css';
-
-export default function Home() {
+function PageContent() {
 	// theme
 	const { theme } = useTheme();
 
@@ -18,7 +16,7 @@ export default function Home() {
 					<span className="text-3xl md:text-8xl font-nunito font-extrabold">
 						Programming Today,
 					</span>
-					<span className="text-4xl py-3 md:text-8xl font-dance font-bold md:pt-3">
+					<span className="text-4xl py-3 md:text-8xl font-dance font-extrabold md:pt-3">
 						Shaping a
 					</span>
 					<span className="text-3xl md:text-8xl font-nunito font-extrabold  md:pt-3">
@@ -26,9 +24,11 @@ export default function Home() {
 					</span>
 				</div>
 			</section>
-			<About theme={theme} />
+			<About />
 			<Work />
 			<Contact />
 		</main>
 	);
 }
+
+export default PageContent;

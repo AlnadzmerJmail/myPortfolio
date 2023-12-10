@@ -1,26 +1,16 @@
 import React from 'react';
-import Image from 'next/image';
 
-import { useTheme } from 'next-themes';
+import Me from './Me';
 import '../dist/about.css';
 
-function About() {
-	// theme
-	const { theme } = useTheme();
+function About({ theme }: { theme?: string }) {
 	return (
 		<section
 			id="about"
 			className="w-full flex flex-wrap pb-5 md:pb-10 bg-white dark:bg-dark-100"
 		>
-			<div className="w-full md:w-1/2">
-				<Image
-					src={'/assets/me.jpg'}
-					alt="Alnadzmer Photo"
-					className={`${theme === 'dark' ? 'opacity-70' : 'opacity-95'}`}
-					width={1000}
-					height={100}
-				/>
-			</div>
+			{/* My Image */}
+			<Me />
 			<div className="w-full md:w-1/2 flex flex-wrap items-center p-5 md:pl-[70px] md:pr-[150px]">
 				<div>
 					<span className="w-full block text-left md:text-left uppercase text-lg font-nunito font-bold mb-5 md:mb-7 text-pink-500 dark:text-purple-800 red-700">

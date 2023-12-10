@@ -1,7 +1,14 @@
 .work-content {
 	&__list {
+		// list Item has width of 75%
 		width: 525%;
 
+		// list Item has width of 50%
+		@media screen and (min-width: 768px) and (max-width: 992px) {
+			width: 350%;
+		}
+
+		// list Item has width of 25%
 		@media screen and (min-width: 992px) {
 			width: 175%;
 		}

@@ -95,7 +95,15 @@ function WorkContent() {
 					windowWidth < 992 ? windowWidth / 2 : windowWidth - windowWidth / 3,
 			}}
 			dragElastic={0.1}
-			initial={{ x: window.innerWidth < 992 ? window.innerWidth / 2 : 400 }}
+			// initial={{ x: windowWidth < 992 ? windowWidth / 2 : 400 }}
+			initial={{
+				x:
+					typeof window !== 'undefined'
+						? window.innerWidth < 992
+							? window.innerWidth / 2
+							: 400
+						: 200,
+			}}
 			dragControls={dragControls}
 			// dragListener={false}
 			onDragStart={handleDragStart}
@@ -145,7 +153,7 @@ const ListItem = ({
 }: listItemProps) => {
 	return (
 		<li
-			className="work-content__item w-full md:w-1/4 h-[350px] md:h-[470px]"
+			className="work-content__item w-full md:w-1/2 lg:w-1/4 h-[350px] md:h-[470px]"
 			onPointerDown={(e) => pointerDown(e)}
 			onClick={() => clickHandler(title)}
 		>
@@ -156,7 +164,9 @@ const ListItem = ({
 						alt={`${title}-image`}
 						priority={true}
 						fill
-						objectFit="cover"
+						// objectFit="cover"
+						style={{ objectFit: 'cover' }}
+						sizes="(max-width: 768px) 75vw, (max-width: 768px) 65vw, 25vw"
 						className="work-content__img"
 					/>
 					<div className={`work-content__details ${theme}`}>

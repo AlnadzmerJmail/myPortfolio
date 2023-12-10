@@ -12,11 +12,7 @@ type Props = {
 
 function Project(props: Props) {
 	const searchParams = props.searchParams;
-
-	console.log('SEARCH PARAMS--->>>>', searchParams);
-
 	const name: string | string[] | undefined = searchParams?.name;
-
 	const data = name ? constants[name as keyof typeof constants] || {} : {};
 
 	return <MyProject data={data} />;

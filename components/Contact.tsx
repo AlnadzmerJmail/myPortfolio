@@ -125,6 +125,7 @@ function Contact() {
 						errors={errors}
 						register={register}
 						type="name"
+						readOnly={message === 'sending'}
 					/>
 					<EmailInput
 						inputClassName={theme}
@@ -132,6 +133,7 @@ function Contact() {
 						errors={errors}
 						register={register}
 						type="email"
+						readOnly={message === 'sending'}
 					/>
 					<EmailInput
 						mainClassName="mb-8"
@@ -140,6 +142,7 @@ function Contact() {
 						errors={errors}
 						register={register}
 						type="message"
+						readOnly={message === 'sending'}
 					/>
 					{/* Notify Button */}
 					<div
@@ -156,7 +159,7 @@ function Contact() {
 									width="24"
 									height="24"
 									viewBox="0 0 24 24"
-									stroke-width="2"
+									strokeWidth="2"
 									stroke="currentColor"
 									fill="none"
 									strokeLinecap="round"
@@ -172,7 +175,7 @@ function Contact() {
 									width="24"
 									height="24"
 									viewBox="0 0 24 24"
-									stroke-width="2"
+									strokeWidth="2"
 									stroke="currentColor"
 									fill="none"
 									strokeLinecap="round"
@@ -289,6 +292,7 @@ interface emailInputProps {
 	type: 'name' | 'email' | 'message';
 	label: string;
 	errors: any;
+	readOnly: boolean;
 }
 
 const EmailInput = ({
@@ -298,6 +302,7 @@ const EmailInput = ({
 	errors,
 	register,
 	type,
+	readOnly,
 	...rest
 }: emailInputProps) => {
 	return (
@@ -315,6 +320,7 @@ const EmailInput = ({
 					className={`w-full block font-nunito pl-3 py-3 ipt-${
 						inputClassName || 'dark'
 					}`}
+					readOnly={readOnly}
 					rows={3}
 					{...register(type, { required: true })}
 				/>
@@ -325,6 +331,8 @@ const EmailInput = ({
 					className={`w-full block font-nunito pl-3 py-3 ipt-${
 						inputClassName || 'dark'
 					}`}
+					type={type}
+					readOnly={readOnly}
 					{...register(type, { required: true })}
 				/>
 			)}

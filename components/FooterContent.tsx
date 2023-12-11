@@ -89,7 +89,7 @@ function FooterContent({ env }: FooterContentType) {
 						key={icon.link}
 						href={icon.link || '#'}
 						target="_blank"
-						className="p-1 rounded-sm text-white dark:text-slate-400 bg-pink-50 dark:bg-pink-150 hover:bg-pink-100 dark:hover:bg-pink-50 transition-all delay-75 duration-100"
+						className="p-1 rounded-sm text-white dark:text-slate-400 bg-pink-50 dark:bg-pink-150 hover:bg-pink-100 dark:hover:bg-pink-100 transition-all delay-75 duration-100"
 					>
 						{icon.icon}
 					</Link>

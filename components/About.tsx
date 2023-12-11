@@ -17,7 +17,7 @@ function About({ theme }: { theme?: string }) {
 						About
 					</span>
 					<h3
-						className={`w-full text-3xl md:text-6xl font-nunito font-black pb-1 ${
+						className={`w-full text-3xl md:text-6xl font-nunito font-black pb-1 md:pb-0 ${
 							theme || 'dark'
 						}-my-name`}
 					>

@@ -55,8 +55,17 @@ function WorkContent() {
 		NProgress.done();
 	}, [pathname]);
 
-	const navigationHandler = (projectName: string) => {
-		if (!isDragged) {
+	type clickHandlerType = {
+		title: string;
+		e: React.MouseEvent<HTMLElement>;
+	};
+
+	const navigationHandler = ({ title: projectName, e }: clickHandlerType) => {
+		let isView;
+		if (e.target instanceof Element)
+			isView = e.target.className.includes('view');
+
+		if (!isDragged || isView) {
 			NProgress.start();
 			router.push(`/project?name=${projectName.toLocaleLowerCase()}`);
 		}
@@ -124,7 +133,7 @@ function WorkContent() {
 							img={img}
 							theme={theme || 'dark'}
 							pointerDown={(e) => dragControls.start(e)}
-							clickHandler={navigationHandler}
+							clickHandler={({ title, e }) => navigationHandler({ title, e })}
 						/>
 					))}
 				</ul>
@@ -141,7 +150,13 @@ interface listItemProps {
 	theme: string;
 
 	pointerDown: (e: React.PointerEvent<HTMLElement>) => void;
-	clickHandler: (e: string) => void;
+	clickHandler: ({
+		title,
+		e,
+	}: {
+		title: string;
+		e: React.MouseEvent<HTMLElement>;
+	}) => void;
 }
 const ListItem = ({
 	title,
@@ -155,7 +170,7 @@ const ListItem = ({
 		<li
 			className="work-content__item w-full md:w-1/2 lg:w-1/4 h-[350px] md:h-[470px]"
 			onPointerDown={(e) => pointerDown(e)}
-			onClick={() => clickHandler(title)}
+			onClick={(e) => clickHandler({ title, e })}
 		>
 			<div className="work-content__details-wrapper">
 				<div className="work-content__main-details">
@@ -170,11 +185,16 @@ const ListItem = ({
 						className="work-content__img"
 					/>
 					<div className={`work-content__details ${theme}`}>
-						<div className="text-center overflow-hidden bg-darkh-50">
+						<div className="text-center overflow-hidden h-[110px] bg-pink-5f0">
 							<h3 className="text-3xl md:text-5xl font-nunito font-extrabold uppercase">
 								{title}
 							</h3>
 							<span className="text-sm md:text-base">{subTitle}</span>
+							<span className="block md:hidden text-center mt-3">
+								<button className="view-btn rounded-sm text-base px-5 pt-0.5 pb-1 bg-pink-400 dark:bg-pink-100">
+									View
+								</button>
+							</span>
 						</div>
 					</div>
 				</div>

@@ -58,15 +58,17 @@
 		background-color: transparent;
 
 		h3,
-		span {
+		span,
+		button {
 			position: relative;
-			bottom: -72px;
+			bottom: -110px;
 			transition: all ease 0.3s 0.1s;
 		}
 
 		&:hover {
 			h3,
-			span {
+			span,
+			button {
 				bottom: 0;
 			}
 		}

@@ -316,7 +316,7 @@ const EmailInput = ({
 			{label.toLocaleLowerCase() === 'message' ? (
 				<textarea
 					id={label.toLocaleLowerCase()}
-					placeholder={`Enter ${label.toLocaleLowerCase()}`}
+					placeholder={`Enter your ${label.toLocaleLowerCase()}`}
 					className={`w-full block font-nunito pl-3 py-3 ipt-${
 						inputClassName || 'dark'
 					}`}
@@ -327,7 +327,7 @@ const EmailInput = ({
 			) : (
 				<input
 					id={label.toLocaleLowerCase()}
-					placeholder={`Enter ${label.toLocaleLowerCase()}`}
+					placeholder={`Enter your ${label.toLocaleLowerCase()}`}
 					className={`w-full block font-nunito pl-3 py-3 ipt-${
 						inputClassName || 'dark'
 					}`}

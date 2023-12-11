@@ -14,7 +14,7 @@ export default function Home() {
 	return (
 		<main className={`home-page ${theme || 'dark'}`}>
 			<section className={`home-page__intro w-full -z-40 ${theme || 'dark'}`}>
-				<div className="text-center">
+				<div className="text-center mb-10 md:mb-0">
 					<span className="text-3xl md:text-8xl font-nunito font-extrabold">
 						Programming Today,
 					</span>

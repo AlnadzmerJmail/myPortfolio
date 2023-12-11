@@ -23,10 +23,7 @@ export async function sendMail(sendMailObj: sendMail) {
 
 	const info = await transporter.sendMail(mailOptions);
 
-	if (info?.accepted[0]) {
-		console.log('FROM mailService.ts -- Email Sent', info);
-		return { success: true, ...info };
-	}
+	if (info?.accepted[0]) return { success: true, ...info };
 
 	return { success: false };
 }

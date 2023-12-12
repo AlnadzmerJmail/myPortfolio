@@ -76,18 +76,14 @@ function WorkContent() {
 	const handleDragStart = () => {
 		const ulElement = ulRef.current;
 
-		if (ulElement) {
-			ulElement.style.cursor = 'grab';
-		}
+		if (ulElement) ulElement.style.cursor = 'grab';
 
 		setIsDragged(true);
 	};
 
 	const handleDragEnd = () => {
 		const ulElement = ulRef.current;
-		if (ulElement) {
-			ulElement.style.cursor = 'pointer';
-		}
+		if (ulElement) ulElement.style.cursor = 'pointer';
 	};
 
 	return (

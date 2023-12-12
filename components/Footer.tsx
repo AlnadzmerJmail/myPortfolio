@@ -5,11 +5,12 @@ import FooterContent from './FooterContent';
 import '../dist/footer.css';
 
 function Footer() {
-	const { GITHUB_URL, LINKEDIN_URL, FACEBOOK_URL } = process.env;
+	const { GITHUB_URL, LINKEDIN_URL, FACEBOOK_URL, PORTFOLIO_URL } = process.env;
 	const env = {
 		GITHUB_URL,
 		LINKEDIN_URL,
 		FACEBOOK_URL,
+		PORTFOLIO_URL,
 	};
 
 	return (

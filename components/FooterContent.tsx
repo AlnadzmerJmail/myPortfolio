@@ -11,11 +11,12 @@ type FooterContentType = {
 		GITHUB_URL?: string;
 		LINKEDIN_URL?: string;
 		FACEBOOK_URL?: string;
+		PORTFOLIO_URL?: string;
 	};
 };
 
 function FooterContent({ env }: FooterContentType) {
-	const { GITHUB_URL, LINKEDIN_URL, FACEBOOK_URL } = env;
+	const { GITHUB_URL, LINKEDIN_URL, FACEBOOK_URL, PORTFOLIO_URL } = env;
 
 	const params = useSearchParams();
 	const paramsName = params.get('name');
@@ -58,10 +59,9 @@ function FooterContent({ env }: FooterContentType) {
 						otherProps = {};
 
 					if (nav === 'source code') {
-						if (paramsName) {
-							href = sourceCodes[paramsName];
-							otherProps = { target: '_blank' };
-						} else href = '/portfolio';
+						otherProps = { target: '_blank' };
+						if (paramsName) href = sourceCodes[paramsName];
+						else href = `${PORTFOLIO_URL}`;
 					} else {
 						if (paramsName) id = 'nothing';
 						href = `/#${nav}`;

@@ -24,14 +24,14 @@ function About({ theme }: { theme?: string }) {
 						Alnadzmer Jamil
 					</h3>
 					<span className="w-full block text-left text-xs md:text-base font-nunito font-bold pb-5 md:pt-3  uppercase text-indigo-300 dark:text-pink-50 fullstackkk">
-						__ Fullstack Web Developer
+						__ Full Stack Web Developer
 					</span>
 					<p className="w-full font-nunito text-lg md:text-xl text-pink-400 dark:text-pink-100">
 						My extensive experience in frontend development has fueled my
 						inspiration to venture into backend and conquer web technologies. I
 						am actively seeking opportunities in{' '}
 						<span className="text-indigo-300 dark:text-pink-50 fullstackkk">
-							Fullstack Web Development
+							Full Stack Web Development
 						</span>{' '}
 						and I am eager to collaborate with like-minded individuals who share
 						a common passion and vision for pushing the boundaries of web

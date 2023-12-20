@@ -27,9 +27,11 @@ function Navbar() {
 		const handleScroll = (e: any) => {
 			const top = window.scrollY;
 
-			if (borderBottom && top < 682) setborderBottom('');
+			const base = window.innerWidth < 992 ? 578 : 655;
 
-			if (!borderBottom && top > 682) setborderBottom('colored-nav');
+			if (borderBottom && top < base) setborderBottom('');
+
+			if (!borderBottom && top > base) setborderBottom('colored-nav');
 		};
 		window.addEventListener('scroll', handleScroll);
 

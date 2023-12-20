@@ -27,7 +27,8 @@ function Navbar() {
 		const handleScroll = (e: any) => {
 			const top = window.scrollY;
 
-			const base = window.innerWidth < 992 ? 578 : 655;
+			// 80 -- is nav height but 82 is something works well
+			const base = window.innerHeight - 82;
 
 			if (borderBottom && top < base) setborderBottom('');
 

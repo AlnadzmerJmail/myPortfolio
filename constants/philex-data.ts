@@ -310,7 +310,7 @@ export const betterPhotosData = {
 	main: {
 		image: '/assets/betterphotos.png',
 		title: 'BetterPhotos',
-		subTitle: 'Web App - Personal Project',
+		subTitle: 'UI/UX Design - Personal Project',
 		date: '2023',
 		link: process.env.BETTERPHOTOOS_URL,
 		description: `Minimalist yet powerful web app design using only HTML and CSS, 
@@ -323,7 +323,15 @@ export const betterPhotosData = {
 
 		// features: ['Delivery Transactions','Bookings',''],
 	},
-	stacks: ['HTML', 'CSS', 'Sass'],
+	stacks: [
+		'HTML',
+		'CSS',
+		'Sass',
+		'postcss',
+		'postcss-cli',
+		'csso-cli',
+		'autoprefixer',
+	],
 	previews: [
 		{
 			name: 'main',

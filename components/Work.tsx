@@ -14,7 +14,7 @@ function Work() {
 					|
 				</span>
 				<span className="text-lg font-nunito font-bold text-left uppercase text-pink-500 dark:text-purple-800 red-700">
-					Project I work on
+					Project I have worked on
 				</span>
 			</div>
 			<WorkContent />

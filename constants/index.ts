@@ -6,7 +6,7 @@ import {
 	corpCommentData,
 	betterPhotosData,
 	socialEditorData,
-} from './philex-data';
+} from './data';
 
 export default {
 	philex: philexData,

@@ -1,4 +1,11 @@
 .work-content {
+	&__item {
+		border: 1px solid rgb(229 229 229);
+
+		&:hover {
+			border: none;
+		}
+	}
 	&__list {
 		// list Item has width of 75%
 		width: 525%;
@@ -8,9 +15,10 @@
 			width: 350%;
 		}
 
-		// list Item has width of 25%
+		// list Item has width of 25% -- now 22%
 		@media screen and (min-width: 992px) {
-			width: 175%;
+			// width: 175%;
+			width: 154%;
 		}
 	}
 

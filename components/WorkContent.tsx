@@ -95,7 +95,7 @@ function WorkContent() {
 				left:
 					windowWidth < 992
 						? -((ulRef?.current?.clientWidth || 0) - windowWidth / 2)
-						: -windowWidth - windowWidth / 3,
+						: -windowWidth - windowWidth / 5,
 				right:
 					windowWidth < 992 ? windowWidth / 2 : windowWidth - windowWidth / 3,
 			}}
@@ -117,7 +117,7 @@ function WorkContent() {
 			<div className="work-content__list-wrapper">
 				<ul
 					ref={ulRef}
-					className="work-content__list  flex gap-4 md:gap-5"
+					className="work-content__list  flex gap-4 md:gap-6"
 					// onPointerDown={(e) => dragControls.start(e)}
 					// onClick={navigationHandler}
 				>
@@ -164,7 +164,8 @@ const ListItem = ({
 }: listItemProps) => {
 	return (
 		<li
-			className="work-content__item w-full md:w-1/2 lg:w-1/4 h-[350px] md:h-[470px]"
+			// className="work-content__item w-full md:w-1/2 lg:w-1/4 h-[350px] md:h-[470px]"
+			className="work-content__item w-full md:w-1/2 lg:w-[22%] h-[350px] md:h-[450px] rounded-md overflow-hidden"
 			onPointerDown={(e) => pointerDown(e)}
 			onClick={(e) => clickHandler({ title, e })}
 		>
@@ -178,11 +179,11 @@ const ListItem = ({
 						// objectFit="cover"
 						style={{ objectFit: 'cover' }}
 						sizes="(max-width: 768px) 75vw, (max-width: 768px) 65vw, 25vw"
-						className="work-content__img"
+						className="work-content__img rounded-md"
 					/>
 					<div className={`work-content__details ${theme}`}>
 						<div className="text-center overflow-hidden h-[110px] bg-pink-5f0">
-							<h3 className="text-3xl md:text-5xl font-nunito font-extrabold uppercase">
+							<h3 className="text-3xl md:text-4xl font-nunito font-extrabold uppercase">
 								{title}
 							</h3>
 							<span className="text-sm md:text-base">{subTitle}</span>

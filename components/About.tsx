@@ -7,7 +7,7 @@ function About({ theme }: { theme?: string }) {
 	return (
 		<section
 			id="about"
-			className="w-full flex flex-wrap pb-5 md:pb-10 bg-white dark:bg-dark-100"
+			className="w-full flex flex-wrap pb-5 md:pb-20 bg-white dark:bg-dark-100"
 		>
 			{/* My Image */}
 			<Me />

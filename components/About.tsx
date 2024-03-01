@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Me from './Me';
+import MyName from './MyName';
 import '../dist/about.css';
 
 function About({ theme }: { theme?: string }) {
@@ -16,15 +17,16 @@ function About({ theme }: { theme?: string }) {
 					<span className="w-full block text-left md:text-left uppercase text-lg font-nunito font-bold mb-5 md:mb-7 text-pink-500 dark:text-purple-800 red-700">
 						About
 					</span>
-					<h3
-						className={`w-full text-3xl md:text-6xl font-nunito font-black pb-1 md:pb-0 ${
+					{/* <h3
+						className={`w-full relative text-3xl md:text-6xl font-nunito font-black pb-1 md:pb-0 ${
 							theme || 'dark'
 						}-my-name`}
 					>
-						Alnadzmer Jamil
-					</h3>
+						Alnadzmer Jamil <span className={`${theme || 'dark'} bar`} />
+					</h3> */}
+					<MyName />
 					<span className="w-full block text-left text-xs md:text-base font-nunito font-bold pb-5 md:pt-3  uppercase text-indigo-300 dark:text-pink-50 fullstackkk">
-						__ Full Stack Web Developer
+						Full Stack Web Developer
 					</span>
 					<p className="w-full font-nunito text-lg md:text-xl text-pink-400 dark:text-pink-100">
 						My extensive experience in frontend development has fueled my

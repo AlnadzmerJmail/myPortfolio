@@ -1,3 +1,44 @@
+@keyframes bar {
+	0% {
+		visibility: visible;
+	}
+	100% {
+		visibility: hidden;
+	}
+}
+
+@keyframes bar {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.my-name {
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 3px;
+		margin-left: 10px;
+		width: 8px;
+		border-radius: 3px;
+	}
+
+	&.blink {
+		&::after {
+			animation: bar 0.9s infinite;
+		}
+	}
+
+	&::before {
+		content: '';
+		display: inline-block;
+	}
+}
+
 .dark-my-name {
 	background: radial-gradient(
 		circle,
@@ -14,7 +55,10 @@
 	color: transparent;
 	background-size: 400%;
 	animation: gradient 10s linear infinite alternate;
-	// font-family: Open Sans, sans-serif;
+
+	&::after {
+		background-color: #ab9bc4;
+	}
 }
 .light-my-name {
 	background: radial-gradient(
@@ -33,6 +77,10 @@
 	background-size: 400%;
 	animation: gradient 10s linear infinite alternate;
 	// font-family: Open Sans, sans-serif;
+
+	&::after {
+		background-color: rgb(165, 180, 252);
+	}
 }
 
 @keyframes gradient {

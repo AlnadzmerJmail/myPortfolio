@@ -117,7 +117,7 @@ function WorkContent() {
 			<div className="work-content__list-wrapper">
 				<ul
 					ref={ulRef}
-					className="work-content__list  flex gap-4 md:gap-6"
+					className="work-content__list flex gap-4 md:gap-6"
 					// onPointerDown={(e) => dragControls.start(e)}
 					// onClick={navigationHandler}
 				>
@@ -165,11 +165,11 @@ const ListItem = ({
 	return (
 		<li
 			// className="work-content__item w-full md:w-1/2 lg:w-1/4 h-[350px] md:h-[470px]"
-			className="work-content__item w-full md:w-1/2 lg:w-[22%] h-[350px] md:h-[450px] rounded-md overflow-hidden"
+			className="work-content__item w-full md:w-1/2 lg:w-[22%] h-[350px] md:h-[450px] overflow-hiddenn"
 			onPointerDown={(e) => pointerDown(e)}
 			onClick={(e) => clickHandler({ title, e })}
 		>
-			<div className="work-content__details-wrapper">
+			<div className={`${theme || 'dark'} work-content__details-wrapper`}>
 				<div className="work-content__main-details">
 					<Image
 						src={img}

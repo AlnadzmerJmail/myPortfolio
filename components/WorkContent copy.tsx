@@ -26,13 +26,7 @@ function WorkContent() {
 	const [isDragged, setIsDragged] = useState(false);
 
 	const [isPrevBtnDisabled, setIsPrevBtnDisabled] = useState(false);
-	const [isNextBtnDisabled, setIsNextBtnDisabled] = useState(true);
-
-	const maxLeft =
-		windowWidth < 992
-			? -((ulRef?.current?.clientWidth || 0) - windowWidth / 2)
-			: -(ulRef?.current?.clientWidth || 0) + windowWidth - 400;
-	const maxRight = windowWidth < 992 ? windowWidth / 2 : 400;
+	const [isNextBtnDisabled, setIsNextBtnDisabled] = useState(false);
 
 	useLayoutEffect(() => {
 		const windowWidth = window.innerWidth;
@@ -65,15 +59,14 @@ function WorkContent() {
 
 				const value = Number(transformXValue);
 
+				const maxLeft = -windowWidth - windowWidth / 5;
+
+				console.log('MAX-->>', maxLeft, value);
+
 				// max scroll to left
 				if (value < maxLeft || value === maxLeft) {
 					setIsPrevBtnDisabled(true);
 				} else setIsPrevBtnDisabled(false);
-
-				// max scroll to right
-				if (value > maxRight || value === maxRight) {
-					setIsNextBtnDisabled(true);
-				} else setIsNextBtnDisabled(false);
 			}
 		};
 
@@ -148,18 +141,20 @@ function WorkContent() {
 	};
 
 	const prevHandler = (e: React.MouseEvent<HTMLElement>) => {
+		// console.log(draggableRef?.current?.style?.transform);
+
 		const { transformValues, transformXValue } = getDraggableTransformXValue();
 
 		const value = Number(transformXValue);
 
 		if (!isNaN(value)) {
-			const maxLeft = -(ulRef?.current?.clientWidth || 0) + windowWidth - 400;
+			const maxLeft = -windowWidth - windowWidth / 5;
 
-			// every click we minus 210px
-			let newValue = value - 320;
+			// every click we minus 200px
+			let newValue = value - 200;
 
 			// max scroll to left
-			if (newValue < maxLeft || newValue === maxLeft) {
+			if (newValue < maxLeft) {
 				newValue = maxLeft;
 				setIsPrevBtnDisabled(true);
 			}
@@ -177,33 +172,8 @@ function WorkContent() {
 		}
 	};
 
-	const nextHandler = (e: React.MouseEvent<HTMLElement>) => {
-		const { transformValues, transformXValue } = getDraggableTransformXValue();
-
-		const value = Number(transformXValue);
-
-		if (!isNaN(value)) {
-			// every click we add 210px
-			let newValue = value + 320;
-
-			// max scroll to right
-			if (newValue > maxRight || newValue === maxRight) {
-				newValue = maxRight;
-				setIsNextBtnDisabled(true);
-			}
-
-			transformValues[0] = `translateX(${newValue}px)`;
-			animationControls.set({
-				x: newValue,
-				y: 0,
-			});
-		}
-
-		if (draggableRef?.current?.style?.transform) {
-			draggableRef.current.style.transform = transformValues.join(' ');
-			draggableRef.current.style.transition = 'all ease 0.5s 0.1s';
-		}
-	};
+	// console.log(draggableRef?.current);
+	// console.log(-windowWidth - windowWidth / 5);
 
 	return (
 		<>
@@ -214,8 +184,12 @@ function WorkContent() {
 				drag="x"
 				// dragPropagation
 				dragConstraints={{
-					left: maxLeft,
-					right: maxRight,
+					left:
+						windowWidth < 992
+							? -((ulRef?.current?.clientWidth || 0) - windowWidth / 2)
+							: -windowWidth - windowWidth / 5,
+					right:
+						windowWidth < 992 ? windowWidth / 2 : windowWidth - windowWidth / 3,
 				}}
 				dragElastic={0.1}
 				// initial={{ x: windowWidth < 992 ? windowWidth / 2 : 400 }}
@@ -259,14 +233,14 @@ function WorkContent() {
 				disabled={isPrevBtnDisabled}
 				className={`${
 					theme || 'dark'
-				} bg-pink-25 dark:bg-dark-100 work-content__button--prev navigation-btn`}
+				} dark:bg-dark-100 work-content__button--prev`}
 				onClick={prevHandler}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 20 20"
 					fill="currentColor"
-					className="arrow-left navigation-arrow"
+					className="arrow-left"
 				>
 					<path
 						fillRule="evenodd"
@@ -280,14 +254,14 @@ function WorkContent() {
 				disabled={isNextBtnDisabled}
 				className={`${
 					theme || 'dark'
-				} bg-pink-25 dark:bg-dark-100 work-content__button--next navigation-btn`}
-				onClick={nextHandler}
+				} dark:bg-dark-100 work-content__button--next`}
+				onClick={prevHandler}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 20 20"
 					fill="currentColor"
-					className="arrow-right navigation-arrow"
+					className="arrow-right"
 				>
 					<path
 						fillRule="evenodd"

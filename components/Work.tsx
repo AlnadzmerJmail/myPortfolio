@@ -7,9 +7,9 @@ function Work() {
 	return (
 		<div
 			id="work"
-			className="w-ful overflow-hidden bg-white dark:bg-dark-100 pb-10"
+			className="w-full relative overflow-hidden bg-white dark:bg-dark-100 pb-10"
 		>
-			<div className="w-full pl-5 md:pl-0  md:text-left md:w-3/4 md:relative md:left-[400px]  bg-white dark:bg-dark-100">
+			<div className="w-full pl-5 md:pl-0  md:text-left md:w-3/4 md:relative md:left-[400px]  bg-whited dark:bg-dark-100d">
 				<span className="text-lg font-nunito font-bold text-left uppercase text-pink-500 dark:text-purple-800 red-700">
 					Work
 				</span>

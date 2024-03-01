@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 
 import { useTheme } from 'next-themes';
-import { get } from 'http';
 
 const myName = 'Alnadzmer Jamil';
 

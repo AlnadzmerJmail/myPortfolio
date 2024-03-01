@@ -15,13 +15,15 @@ export default function Home() {
 		<main className={`home-page ${theme || 'dark'}`}>
 			<section className={`home-page__intro w-full -z-40 ${theme || 'dark'}`}>
 				<div className="text-center mb-10 md:mb-0">
-					<span className="text-3xl md:text-8xl font-nunito font-extrabold">
+					<span className="text-3xl md:text-8xl font-extrabold font-nunito">
 						Programming Today,
 					</span>
-					<span className="text-4xl py-3 md:text-8xl font-dance font-bold md:pt-3">
+					<span
+						className={`text-4xl py-3 md:text-8xl font-bold md:pt-3 font-dance`}
+					>
 						Shaping a
 					</span>
-					<span className="text-3xl md:text-8xl font-nunito font-extrabold  md:pt-3">
+					<span className="text-3xl md:text-8xl font-extrabold  md:pt-3 font-nunito">
 						Seamless Tomorrow
 					</span>
 				</div>

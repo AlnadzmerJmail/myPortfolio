@@ -11,17 +11,17 @@ import Footer from '@/components/Footer';
 
 const nunito = Nunito({
 	subsets: ['latin'],
-	variable: '--font-nunito',
+	variable: '--font-nunitong',
 });
 
 const dancingScript = Dancing_Script({
 	subsets: ['latin'],
-	variable: '--font-dancing',
+	variable: '--font-dance',
 });
 
 const roboto = Roboto_Slab({
 	subsets: ['latin'],
-	variable: '--font-roboto',
+	variable: '--font-robotong',
 });
 
 const customFont = () =>

@@ -40,9 +40,9 @@ module.exports = {
 				},
 			},
 			fontFamily: {
-				nunito: ['var(--font-nunito)', ...fontFamily.sans],
-				dance: ['var(--font-dancing)', ...fontFamily.sans],
-				roboto: ['var(--font-roboto)', ...fontFamily.sans],
+				nunito: ['var(--font-nunitong)', ...fontFamily.sans],
+				dance: ['var(--font-dance)', ...fontFamily.sans],
+				roboto: ['var(--font-robotong)', ...fontFamily.sans],
 			},
 		},
 	},

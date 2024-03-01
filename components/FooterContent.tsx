@@ -168,5 +168,5 @@ const sourceCodes: Record<string, string> = {
 	rmtdev: 'https://github.com/AlnadzmerJmail/rmtDev',
 	corpcmt: 'https://github.com/AlnadzmerJmail/CorpComment',
 	btrphotos: 'https://github.com/AlnadzmerJmail/BetterPhotos',
-	scleditor: 'https://github.com/AlnadzmerJmail/YourSclEditor',
+	scleditor: 'https://github.com/AlnadzmerJmail/SocialEditor',
 };

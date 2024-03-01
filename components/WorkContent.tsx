@@ -204,37 +204,37 @@ const projects = [
 	{
 		title: 'Philex',
 		subTitle: 'Web App - 2022',
-		img: '/assets/philex.png',
+		img: '/assets/philex-thumbnail.jpg',
 	},
 	{
 		title: 'ComePers',
 		subTitle: 'Web App - 2023',
-		img: '/assets/comepers.png',
+		img: '/assets/comepers-thumbnail.jpg',
 	},
 	{
 		title: 'ProDev',
 		subTitle: 'Web App - 2023',
-		img: '/assets/prodev.png',
+		img: '/assets/prodev-thumbnail.jpg',
 	},
 	{
 		title: 'rmtDev',
 		subTitle: 'Web App - 2023',
-		img: '/assets/rmtdev.png',
+		img: '/assets/rmtdev-thumbnail.jpg',
 	},
 	{
 		title: 'CorpCmt',
 		subTitle: 'Web App - 2023',
-		img: '/assets/corpcomment.png',
+		img: '/assets/corp-comment-thumbnail.jpg',
 	},
 	{
 		title: 'BtrPhotos',
 		subTitle: 'UI/UX Design - 2023',
-		img: '/assets/betterphotos.png',
+		img: '/assets/better-photos-thumbnail.jpg',
 	},
 	{
 		title: 'SclEditor',
 		subTitle: 'UI/UX Design - 2023',
-		img: '/assets/socialeditor.png',
+		img: '/assets/social-editor-thumbnail.jpg',
 	},
 ];
 

@@ -28,3 +28,89 @@ body {
 .main {
 	overflow-x: hidden;
 }
+
+@keyframes circle_one {
+	0% {
+		transform: translateY(-8px);
+		background-color: #4b2df3;
+	}
+	100% {
+		transform: translateY(3px);
+		background-color: #83309c;
+	}
+}
+
+@keyframes circle_two {
+	0% {
+		transform: translateY(3px);
+		background-color: #83309c;
+	}
+	100% {
+		transform: translateY(-8px);
+		background-color: #4b2df3;
+	}
+}
+
+@keyframes circle_three {
+	0% {
+		transform: translateY(-8px);
+		background-color: #e65f8c;
+	}
+	100% {
+		transform: translateY(3px);
+		background-color: #f5cc18;
+	}
+}
+
+@keyframes circle_four {
+	0% {
+		transform: translateY(3px);
+		background-color: #f5cc18;
+	}
+	100% {
+		transform: translateY(-8px);
+		background-color: #e65f8c;
+	}
+}
+
+.section-title {
+	position: relative;
+}
+
+.section-title::before {
+	content: '';
+	display: block;
+	width: 16px;
+	height: 16px;
+
+	margin-bottom: 5px;
+	border-radius: 50%;
+}
+
+.section-title::after {
+	content: '';
+	display: block;
+	width: 16px;
+	height: 16px;
+
+	position: absolute;
+	top: 0;
+	left: 20px;
+	border-radius: 50%;
+}
+
+.section-title.dark::before {
+	animation: circle_one 0.6s linear 0s infinite alternate;
+}
+
+.section-title.dark::after {
+	animation: circle_two 0.6s linear 0s infinite alternate;
+}
+
+.section-title.light::before {
+	animation: circle_three 0.6s linear 0s infinite alternate;
+}
+
+.section-title.light::after {
+	animation: circle_four 0.6s linear 0s infinite alternate;
+}

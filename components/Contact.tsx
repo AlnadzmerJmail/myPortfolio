@@ -65,7 +65,11 @@ function Contact() {
 			className="w-full pt-10 lg:pt-20 pb-0 px-5 md:px-[200px] m-auto flex flex-wrap justify-center  bg-white dark:bg-dark-100"
 		>
 			<div className="w-full md:w-1/2 pr-10">
-				<span className="block text-left text-lg font-nunito font-bold uppercase mb-5 text-pink-500 dark:text-purple-800 red-700">
+				<span
+					className={`${
+						theme || 'dark'
+					} section-title block text-left text-lg font-nunito font-bold uppercase mb-5 text-pink-500 dark:text-purple-800 red-700`}
+				>
 					Contact
 				</span>
 				<h3 className="text-2xl md:text-4xl font-roboto font-bold mb-5 text-red-400 dark:text-pink-50">

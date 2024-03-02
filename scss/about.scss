@@ -29,7 +29,9 @@
 
 	&.blink {
 		&::after {
-			animation: bar 0.9s infinite;
+			transition: 0.2s ease-out 0.5s;
+			opacity: 0;
+			// animation: bar 0.9s infinite;
 		}
 	}
 

@@ -14,16 +14,13 @@ function About({ theme }: { theme?: string }) {
 			<Me />
 			<div className="w-full md:w-1/2 flex flex-wrap items-center p-5 md:pl-[70px] md:pr-[150px]">
 				<div>
-					<span className="w-full block text-left md:text-left uppercase text-lg font-nunito font-bold mb-5 md:mb-7 text-pink-500 dark:text-purple-800 red-700">
+					<span
+						className={`${
+							theme || 'dark'
+						} section-title w-full block text-left md:text-left uppercase text-lg font-nunito font-bold mb-5 md:mb-7 text-pink-500 dark:text-purple-800 red-700`}
+					>
 						About
 					</span>
-					{/* <h3
-						className={`w-full relative text-3xl md:text-6xl font-nunito font-black pb-1 md:pb-0 ${
-							theme || 'dark'
-						}-my-name`}
-					>
-						Alnadzmer Jamil <span className={`${theme || 'dark'} bar`} />
-					</h3> */}
 					<MyName />
 					<span className="w-full block text-left text-xs md:text-base font-nunito font-bold pb-5 md:pt-3  uppercase text-indigo-300 dark:text-pink-50 fullstackkk">
 						Full Stack Web Developer

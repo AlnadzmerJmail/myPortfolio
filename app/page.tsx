@@ -29,7 +29,7 @@ export default function Home() {
 				</div>
 			</section>
 			<About theme={theme} />
-			<Work />
+			<Work theme={theme} />
 			<Contact />
 		</main>
 	);

@@ -281,7 +281,7 @@ function WorkContent() {
 				disabled={isPrevBtnDisabled}
 				className={`${
 					theme || 'dark'
-				} bg-pink-25 dark:bg-dark-100 work-content__button--prev navigation-btn`}
+				} bg-white dark:bg-dark-100 work-content__button--prev navigation-btn`}
 				onClick={prevNextHandler}
 			>
 				<svg
@@ -302,7 +302,7 @@ function WorkContent() {
 				disabled={isNextBtnDisabled}
 				className={`${
 					theme || 'dark'
-				} bg-pink-25 dark:bg-dark-100 work-content__button--next navigation-btn`}
+				} bg-white dark:bg-dark-100 work-content__button--next navigation-btn`}
 				onClick={prevNextHandler}
 			>
 				<svg

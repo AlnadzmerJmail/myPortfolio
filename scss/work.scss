@@ -82,6 +82,8 @@
 		top: 0px;
 		bottom: 0;
 
+		border-radius: 6px;
+
 		background-color: transparent;
 
 		h3,
@@ -111,15 +113,51 @@
 	&__details.light {
 		background-color: rgba(232, 186, 226, 0.2);
 		&:hover {
-			background-color: rgba(232, 186, 226, 0.6);
-			// background-color: rgba(166, 180, 252, 0.8);
-			// background-color: rgb(121, 114, 157)18%, 53%);
+			// background-color: rgba(232, 186, 226, 0.6);
+			background-color: rgba(189, 128, 207, 0.8);
 		}
 	}
 }
 
 .navigation-btn {
 	display: none;
+}
+
+.work-bar {
+	width: calc(100% - 40px);
+	height: 1px;
+
+	position: relative;
+	margin: 40px 0 0 20px;
+
+	p {
+		height: 1px;
+
+		position: absolute;
+		top: 50%;
+		left: 0;
+
+		transform: translate(0, -50%);
+		transition: all 0.4s linear 0.1s;
+
+		border-radius: 500px;
+	}
+
+	&.dark {
+		background-color: #7a729c;
+
+		p {
+			background-image: linear-gradient(to right, #191742, #f1f2f7, #191742);
+		}
+	}
+
+	&.light {
+		background-color: #eee9ee;
+
+		p {
+			background-image: linear-gradient(to right, #fcfcff, #d145d1, #fcfcff);
+		}
+	}
 }
 
 @media screen and (min-width: 992px) {
@@ -173,5 +211,10 @@
 
 	.work-content__button--next {
 		right: 30px;
+	}
+
+	.work-bar {
+		width: calc(100% - 400px);
+		margin: 40px 0 0 200px;
 	}
 }

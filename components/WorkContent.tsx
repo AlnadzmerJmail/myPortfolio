@@ -5,7 +5,12 @@ import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 import * as NProgress from 'nprogress';
 
-import { motion, useDragControls, useAnimationControls } from 'framer-motion';
+import {
+	motion,
+	useDragControls,
+	useAnimationControls,
+	useMotionValue,
+} from 'framer-motion';
 import { useTheme } from 'next-themes';
 import '../dist/work.css';
 
@@ -22,11 +27,14 @@ function WorkContent() {
 	const dragControls = useDragControls();
 	const animationControls = useAnimationControls();
 
+	const x = useMotionValue(0);
+
 	const [windowWidth, setWindowWidth] = useState(0);
 	const [isDragged, setIsDragged] = useState(false);
 
 	const [isPrevBtnDisabled, setIsPrevBtnDisabled] = useState(false);
 	const [isNextBtnDisabled, setIsNextBtnDisabled] = useState(true);
+	const [barWidth, setBarWidth] = useState(0);
 
 	const maxLeft =
 		windowWidth < 992
@@ -55,25 +63,10 @@ function WorkContent() {
 		const mouseOverEventListener = () => {
 			if (ulElement) {
 				ulElement.style.cursor = 'pointer';
+			}
 
-				if (draggableRef?.current) {
-					draggableRef.current.style.transition = '';
-				}
-
-				const { transformValues, transformXValue } =
-					getDraggableTransformXValue();
-
-				const value = Number(transformXValue);
-
-				// max scroll to left
-				if (value < maxLeft || value === maxLeft) {
-					setIsPrevBtnDisabled(true);
-				} else setIsPrevBtnDisabled(false);
-
-				// max scroll to right
-				if (value > maxRight || value === maxRight) {
-					setIsNextBtnDisabled(true);
-				} else setIsNextBtnDisabled(false);
+			if (draggableRef?.current) {
+				draggableRef.current.style.transition = '';
 			}
 		};
 
@@ -147,49 +140,30 @@ function WorkContent() {
 		return { transformValues: currentTransform, transformXValue };
 	};
 
-	const prevHandler = (e: React.MouseEvent<HTMLElement>) => {
+	const prevNextHandler = (e: React.MouseEvent<HTMLElement>) => {
 		const { transformValues, transformXValue } = getDraggableTransformXValue();
+
+		const clickedEL = e.currentTarget;
+
+		const isNext = clickedEL.className.includes('--next');
 
 		const value = Number(transformXValue);
 
 		if (!isNaN(value)) {
-			const maxLeft = -(ulRef?.current?.clientWidth || 0) + windowWidth - 400;
-
-			// every click we minus 210px
-			let newValue = value - 320;
-
-			// max scroll to left
-			if (newValue < maxLeft || newValue === maxLeft) {
-				newValue = maxLeft;
-				setIsPrevBtnDisabled(true);
-			}
-
-			transformValues[0] = `translateX(${newValue}px)`;
-			animationControls.set({
-				x: newValue,
-				y: 0,
-			});
-		}
-
-		if (draggableRef?.current?.style?.transform) {
-			draggableRef.current.style.transform = transformValues.join(' ');
-			draggableRef.current.style.transition = 'all ease 0.5s 0.1s';
-		}
-	};
-
-	const nextHandler = (e: React.MouseEvent<HTMLElement>) => {
-		const { transformValues, transformXValue } = getDraggableTransformXValue();
-
-		const value = Number(transformXValue);
-
-		if (!isNaN(value)) {
-			// every click we add 210px
-			let newValue = value + 320;
+			// every click we add or minus 320px
+			let newValue = isNext ? value + 320 : value - 320;
 
 			// max scroll to right
-			if (newValue > maxRight || newValue === maxRight) {
-				newValue = maxRight;
-				setIsNextBtnDisabled(true);
+			if (isNext) {
+				if (newValue > maxRight || newValue === maxRight) {
+					newValue = maxRight;
+					setIsNextBtnDisabled(true);
+				}
+			} else {
+				if (newValue < maxLeft || newValue === maxLeft) {
+					newValue = maxLeft;
+					setIsPrevBtnDisabled(true);
+				}
 			}
 
 			transformValues[0] = `translateX(${newValue}px)`;
@@ -203,6 +177,53 @@ function WorkContent() {
 			draggableRef.current.style.transform = transformValues.join(' ');
 			draggableRef.current.style.transition = 'all ease 0.5s 0.1s';
 		}
+
+		handleDrag();
+	};
+
+	const handleDrag = () => {
+		// `info.point.x` contains the x-axis position while dragging
+		// x.set(info.point.x);
+
+		const { transformValues, transformXValue } = getDraggableTransformXValue();
+
+		// when value is maxRight(400) or greater it means the bar should be 0
+
+		// when value is maxLeft(-1234 -- dynamic) or less it means the bar should be full
+		const value = Number(transformXValue);
+
+		// so it starts from 400 until it reaches the maxLeft(negative numbers -- so 400 downward)
+
+		// 400 -- is offset so that it will be the same as contact width
+		const barMaxWidth = windowWidth - 400;
+
+		// convert value and maxLeft to positive number
+		let positiveValue = Math.abs(value);
+		const positiveMaxLeft = Math.abs(maxLeft);
+
+		let maxLeftCopy = positiveMaxLeft;
+
+		// not yet reached the left side
+		if (value > 0) {
+			positiveValue = 400 - positiveValue;
+		} else {
+			positiveValue += 400;
+			maxLeftCopy += 400;
+		}
+
+		const percent = Math.round((positiveValue / maxLeftCopy) * 100);
+
+		setBarWidth(percent > 100 ? 100 : percent < 0 ? 0 : percent);
+
+		// max scroll to left
+		if (value < maxLeft || value === maxLeft) {
+			setIsPrevBtnDisabled(true);
+		} else setIsPrevBtnDisabled(false);
+
+		// max scroll to right
+		if (value > maxRight || value === maxRight) {
+			setIsNextBtnDisabled(true);
+		} else setIsNextBtnDisabled(false);
 	};
 
 	return (
@@ -231,6 +252,7 @@ function WorkContent() {
 				// dragListener={false}
 				onDragStart={handleDragStart}
 				onDragEnd={handleDragEnd}
+				onDrag={handleDrag}
 			>
 				<div className="work-content__list-wrapper">
 					<ul
@@ -260,7 +282,7 @@ function WorkContent() {
 				className={`${
 					theme || 'dark'
 				} bg-pink-25 dark:bg-dark-100 work-content__button--prev navigation-btn`}
-				onClick={prevHandler}
+				onClick={prevNextHandler}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -281,7 +303,7 @@ function WorkContent() {
 				className={`${
 					theme || 'dark'
 				} bg-pink-25 dark:bg-dark-100 work-content__button--next navigation-btn`}
-				onClick={nextHandler}
+				onClick={prevNextHandler}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -296,6 +318,11 @@ function WorkContent() {
 					/>
 				</svg>
 			</button>
+
+			{/* bar */}
+			<div className={`${theme || 'dark'} work-bar`}>
+				<p style={{ width: `${barWidth}%` }} />
+			</div>
 		</>
 	);
 }
